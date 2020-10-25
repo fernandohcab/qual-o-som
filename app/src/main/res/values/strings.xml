@@ -4,7 +4,7 @@
     <string name="content_description_start_game"> Start game button</string>
     <string name="content_description_sound">Play sound button</string>
     <string name="checkin">Check in button</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="send">Send</string>
     <string name="backButton">Go back button</string>
     <string name="coinsButton">Coins button</string>
     <string name="nextLevelButton">Next level button</string>
@@ -12,7 +12,10 @@
     <string name="playSoundButton">Play sound button</string>
     <string name="configurationButton">Configuration button</string>
     <string name="numberOfLives">Number of lives</string>
-    <string name="noAd">Remove the ads</string>
+    <string name="noAd">Remove the ads and get unlimited lives</string>
     <string name="shareButton">Share button</string>
     <string name="answer">Send the answer button</string>
+    <string name="review">Review the app on Play Store</string>
+    <string name="changeLanguage">Change the language</string>
+    <string name="bug">Report a bug</string>
 </resources>

@@ -1,7 +1,7 @@
 package com.example.quesomeesse;
 
 import android.app.Activity;
-import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,26 +19,23 @@ public class AnswersAdapter extends ArrayAdapter<Answers> {
 
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        // Check if the existing view is being reused, otherwise inflate the view
         View listItemView = convertView;
         if(listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
 
         Answers currentAnswer = getItem(position);
-
         TextView chooseLevel= listItemView.findViewById(R.id.level);
-
-        chooseLevel.setOnClickListener(new View.OnClickListener(){
+        chooseLevel.setText(currentAnswer.getLevel());
+        chooseLevel.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-
+            public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), Level.class);
+                    intent.putExtra("answer", currentAnswer.getAnswer());
+                    intent.putExtra("audio", currentAnswer.getAudio());
+                    v.getContext().startActivity(intent);
             }
-
         });
-
-        //chooseLevel.setText(currentAnswer.getLevel());
-
 
         return listItemView;
     }

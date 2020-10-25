@@ -1,20 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/background">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginLeft="176dp"
-        android:layout_marginTop="268dp"
-        android:text="TextView"
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="139dp"
+        android:layout_height="141dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/confiat"
+        android:contentDescription="@string/configurationButton" />
+
+    <ImageView
+        android:id="@+id/fromConfigToMain"
+        android:layout_width="92dp"
+        android:layout_height="89dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.003"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/backat"
+        android:contentDescription="@string/backButton" />
+
+    <ImageView
+        android:id="@+id/mute"
+        android:layout_width="114dp"
+        android:layout_height="94dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginLeft="112dp"
+        android:layout_marginTop="176dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/mute"/>
+
+    <ImageView
+        android:id="@+id/unmute"
+        android:layout_width="114dp"
+        android:layout_height="94dp"
+        android:layout_marginTop="176dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/som"/>
+
+     <LinearLayout
+         android:id="@+id/linearLayout1"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/unmute">
+
+         <ImageView
+             android:id="@+id/imageView6"
+             android:layout_width="15dp"
+             android:layout_height="95dp"
+             android:layout_weight="1"
+             app:srcCompat="@mipmap/noadat"
+             android:contentDescription="@string/noAd" />
+
+         <TextView
+             android:id="@+id/buyPremium"
+             android:layout_marginTop="15dp"
+             android:layout_width="0sp"
+             android:layout_height="match_parent"
+             android:layout_weight="3"
+             android:text="@string/noAd"
+             android:textColor="@color/white"
+             android:textSize="25sp"
+             android:onClick="buyPremium"/>
+
+     </LinearLayout>
+
+     <LinearLayout
+         android:id="@+id/linearLayout2"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/linearLayout1">
+
+         <ImageView
+             android:id="@+id/imageView8"
+             android:layout_width="15dp"
+             android:layout_height="95dp"
+             android:layout_weight="1"
+             app:srcCompat="@mipmap/starat"
+             android:contentDescription="@string/review" />
+
+         <TextView
+             android:id="@+id/review"
+             android:layout_marginTop="15dp"
+             android:layout_width="0sp"
+             android:layout_height="match_parent"
+             android:layout_weight="3"
+             android:text="@string/review"
+             android:textColor="@color/white"
+             android:textSize="25sp"
+             android:onClick="goReview"/>
+
+     </LinearLayout>
+     <LinearLayout
+         android:id="@+id/linearLayout3"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+         <ImageView
+             android:id="@+id/imageView7"
+             android:layout_width="15dp"
+             android:layout_height="95dp"
+             android:layout_weight="1"
+             app:srcCompat="@mipmap/idat"
+             android:contentDescription="@string/changeLanguage" />
+
+         <TextView
+             android:id="@+id/changeLanguage"
+             android:layout_width="0sp"
+             android:layout_height="match_parent"
+             android:layout_marginTop="25dp"
+             android:layout_weight="3"
+             android:text="@string/changeLanguage"
+             android:textColor="@color/white"
+             android:textSize="25sp" />
+
+     </LinearLayout>
+     <LinearLayout
+         android:id="@+id/linearLayout4"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+         <ImageView
+             android:id="@+id/imageView9"
+             android:layout_width="15dp"
+             android:layout_height="95dp"
+             android:layout_weight="1"
+             app:srcCompat="@mipmap/bugsat"
+             android:contentDescription="@string/bug" />
+
+         <TextView
+             android:id="@+id/reportBugs"
+             android:layout_width="0sp"
+             android:layout_height="match_parent"
+             android:layout_marginTop="27dp"
+             android:layout_weight="3"
+             android:text="@string/bug"
+             android:textColor="@color/white"
+             android:textSize="25sp"
+             android:onClick="sendEmail"/>
+
+     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,7 +37,7 @@
             android:layout_marginLeft="312dp"
             android:layout_marginTop="353dp"
             android:onClick="validation"
-            android:text="@string/answer"
+            android:text="@string/send"
             android:textColor="@color/fundo"
             app:backgroundTint="#FFFFFF" />
 
@@ -50,12 +50,12 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="153dp"
             android:layout_marginLeft="153dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="4dp"
+            android:contentDescription="@string/numberOfLives"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/heartat"
-            android:contentDescription="@string/numberOfLives" />
+            app:srcCompat="@mipmap/heartat" />
 
         <ImageView
             android:id="@+id/playSoundButton"
@@ -125,6 +125,20 @@
             android:layout_marginTop="1dp"
             android:contentDescription="@string/coinsButton"
             app:srcCompat="@mipmap/moedaat" />
+
+        <TextView
+            android:id="@+id/lives"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/imageView2"
+            android:layout_alignLeft="@+id/imageView2"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="57dp"
+            android:layout_marginLeft="57dp"
+            android:layout_marginTop="44dp"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/imageView2"
+            app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
     </RelativeLayout>
 
