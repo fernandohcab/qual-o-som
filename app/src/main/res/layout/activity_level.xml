@@ -24,10 +24,12 @@
             android:layout_marginLeft="36dp"
             android:layout_marginTop="355dp"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -36,7 +38,6 @@
             android:layout_marginStart="312dp"
             android:layout_marginLeft="312dp"
             android:layout_marginTop="353dp"
-            android:onClick="validation"
             android:text="@string/send"
             android:textColor="@color/fundo"
             app:backgroundTint="#FFFFFF" />

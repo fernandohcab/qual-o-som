@@ -27,14 +27,12 @@ public class AnswersAdapter extends ArrayAdapter<Answers> {
         Answers currentAnswer = getItem(position);
         TextView chooseLevel= listItemView.findViewById(R.id.level);
         chooseLevel.setText(currentAnswer.getLevel());
-        chooseLevel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), Level.class);
-                    intent.putExtra("answer", currentAnswer.getAnswer());
-                    intent.putExtra("audio", currentAnswer.getAudio());
-                    v.getContext().startActivity(intent);
-            }
+        chooseLevel.setOnClickListener(v -> {
+                Intent intent = new Intent(v.getContext(), Level.class);
+                intent.putExtra("level", currentAnswer.getLevel());
+                intent.putExtra("answer", currentAnswer.getAnswer());
+                intent.putExtra("audio", currentAnswer.getAudio());
+                v.getContext().startActivity(intent);
         });
 
         return listItemView;

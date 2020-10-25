@@ -26,7 +26,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.146" />
+        app:layout_constraintVertical_bias="0.146"
+        android:layout_marginStart="167dp"
+        android:layout_marginEnd="166dp" />
 
     <ImageButton
         android:id="@+id/startGame"
@@ -103,13 +105,12 @@
         app:srcCompat="@mipmap/shareat" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/lives"
         android:layout_width="25dp"
         android:layout_height="16dp"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
         android:layout_marginTop="44dp"
-        android:text="10"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="@+id/imageView2" />

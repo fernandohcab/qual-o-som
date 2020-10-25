@@ -15,11 +15,12 @@ public class ProgressMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
 
+        // Set the activity fullscreen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
 
-        ArrayList<Answers> answers = new ArrayList<Answers>();
-
+        // Create the levels
+        ArrayList<Answers> answers = new ArrayList<>();
         answers.add(new Answers("Level 1", "oi amor",R.raw.oiamor));
         answers.add(new Answers("Level 2", "fase 2", R.raw.fase2));
         answers.add(new Answers("Level 3", "fase 3", R.raw.fase3));
@@ -29,13 +30,10 @@ public class ProgressMenu extends AppCompatActivity {
 
         AnswersAdapter adapter = new AnswersAdapter(this, answers);
 
+        // Show the levels in GridView
         GridView gridView = findViewById(R.id.gridView);
-
         gridView.setAdapter(adapter);
 
 
     }
-
-
-
 }

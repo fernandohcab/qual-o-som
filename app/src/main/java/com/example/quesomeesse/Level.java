@@ -9,90 +9,66 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Level extends AppCompatActivity{
+public class Level extends AppCompatActivity {
 
-    private String expectedAnswer;
-    private int audio;
-
-    @Override
+    @SuppressLint("SetTextI18n")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level);
         Intent intent = getIntent();
 
-        this.expectedAnswer = intent.getExtras().getString("answer");
-        this.audio = intent.getExtras().getInt("audio");
-
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
 
         ImageView playSoundButton = findViewById(R.id.playSoundButton);
-        playSoundButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                reproduceSound(v);
-            }
-        });
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, intent.getExtras().getInt("audio"));
+        playSoundButton.setOnClickListener(v -> mediaPlayer.start());
 
         // Finish the activity and go back to the main menu
         ImageView backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
+        backButton.setOnClickListener(v -> finish());
+
+        // Send the answer
+        Button sendAnswer = findViewById(R.id.send);
+        sendAnswer.setOnClickListener(v -> {
+            EditText answer = findViewById(R.id.answer);
+            Context context = getApplicationContext();
+            CharSequence text = answer.getText().toString().toLowerCase().trim();
+            int duration = Toast.LENGTH_SHORT;
+            TextView updateLives = findViewById(R.id.lives);
+
+            if (text.equals(intent.getExtras().getString("answer"))) {
+                Toast toast = Toast.makeText(context, "Resposta correta", duration);
+                toast.show();
                 finish();
+            } else {
+                try {
+                    int numOfLives = Integer.parseInt(updateLives.getText().toString());
+                    if (numOfLives > 0) {
+                        numOfLives -= 1;
+                        updateLives.setText(Integer.toString(numOfLives));
+                        Toast toast = Toast.makeText(context, "Resposta incorreta", duration);
+                        toast.show();
+                    } else {
+                        Toast toast = Toast.makeText(context, "Suas vidas acabaram", duration);
+                        toast.show();
+                    }
+                } catch (NumberFormatException e) {
+                    //int numOfLives = Integer.parseInt(tv.getText().toString());
+                    //  numOfLives -= 1;
+                    //tv.setText(Integer.toString(numOfLives));
+                }
             }
         });
     }
-
-    // See if the inserted text is correct
-    @SuppressLint("SetTextI18n")
-    public void validation(View view){
-        EditText answer = findViewById(R.id.answer);
-        Context context = getApplicationContext();
-        CharSequence text = answer.getText().toString().toLowerCase().trim();
-        int duration = Toast.LENGTH_SHORT;
-
-        if(text.equals(this.expectedAnswer)) {
-            Toast toast = Toast.makeText(context, "Resposta correta", duration);
-            toast.show();
-            finish();
-        }else{
-            TextView tv = findViewById(R.id.lives);
-            tv.setText("10");
-            try {
-                int numOfLives = Integer.parseInt(tv.getText().toString());
-                if(numOfLives > 0) {
-                    numOfLives -= 1;
-                    tv.setText(Integer.toString(numOfLives));
-                    Toast toast = Toast.makeText(context, "Resposta incorreta", duration);
-                    toast.show();
-                }
-                else{
-                    Toast toast = Toast.makeText(context, "Suas vidas acabaram", duration);
-                    toast.show();
-                }
-            }
-            catch (NumberFormatException e)
-            {
-                int numOfLives = Integer.parseInt(tv.getText().toString());
-                numOfLives -= 1;
-                tv.setText(Integer.toString(numOfLives));
-            }
-
-        }
-    }
-
-    public void reproduceSound(View view){
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, this.audio);
-        mediaPlayer.start();
-    }
-
 }
+
 /* estudar esse código
 * private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
         @Override

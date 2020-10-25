@@ -1,6 +1,6 @@
 package com.example.quesomeesse;
 
-public class Answers {
+public class Answers{
 
     // The level selected
     private final String level;

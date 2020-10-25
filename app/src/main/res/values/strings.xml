@@ -18,4 +18,6 @@
     <string name="review">Review the app on Play Store</string>
     <string name="changeLanguage">Change the language</string>
     <string name="bug">Report a bug</string>
+    <string name="mute">Mute button</string>
+    <string name="unmute">Unmute button</string>
 </resources>
