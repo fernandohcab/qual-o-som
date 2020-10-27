@@ -25,7 +25,7 @@ public class AnswersAdapter extends ArrayAdapter<Answers> {
         }
 
         Answers currentAnswer = getItem(position);
-        TextView chooseLevel= listItemView.findViewById(R.id.level);
+        TextView chooseLevel= listItemView.findViewById(R.id.singleLevel);
         chooseLevel.setText(currentAnswer.getLevel());
         chooseLevel.setOnClickListener(v -> {
                 Intent intent = new Intent(v.getContext(), Level.class);
