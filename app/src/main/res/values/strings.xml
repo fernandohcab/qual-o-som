@@ -20,4 +20,5 @@
     <string name="bug">Report a bug</string>
     <string name="mute">Mute button</string>
     <string name="unmute">Unmute button</string>
+    <string name="buytip">Comprar uma dica por 10 moedas?</string>
 </resources>

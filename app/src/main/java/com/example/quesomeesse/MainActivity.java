@@ -79,9 +79,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // Go to the progress menu
-        ImageButton startGame = findViewById(R.id.startGame);
+        ImageView startGame = findViewById(R.id.startGame);
         Intent intent = new Intent(this, ProgressMenu.class);
         startGame.setOnClickListener(v -> startActivity(intent));
+
+
     }
 
     @SuppressLint("SetTextI18n")

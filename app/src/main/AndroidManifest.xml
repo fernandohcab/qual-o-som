@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.quesomeesse">
+
     <application
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.QueSomEEsse"
-        android:allowBackup="true">
-        <activity android:name=".ProgressMenu"
+        android:theme="@style/Theme.QueSomEEsse">
+        <activity android:name=".Tips"
             android:screenOrientation="portrait"/>
-        <activity android:name=".Configuration"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".LoginCount"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ProgressMenu"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Configuration"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Level"
             android:screenOrientation="portrait" />
@@ -20,6 +28,7 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

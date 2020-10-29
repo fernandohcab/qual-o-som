@@ -90,7 +90,7 @@ public class Level extends AppCompatActivity {
         // Skip the current level
         ImageView skip = findViewById(R.id.nextLevelButton);
         skip.setOnClickListener(v -> {
-            if(prefs.getInt("coins", 0) > 0) {
+            if( (prefs.getInt("coins", 0) - 10 > 0) || (prefs.getInt("coins", 0) - 15 > 0) ) {
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putInt("coins", prefs.getInt("coins", 0) - 15);
                 editor.apply();
@@ -103,14 +103,8 @@ public class Level extends AppCompatActivity {
 
         // Show tip button
         ImageView tips = findViewById(R.id.tipButton);
-        tips.setOnClickListener(v-> {
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putInt("coins", prefs.getInt("coins", 0) - 10);
-            editor.apply();
-            coins.setText("" + prefs.getInt("coins", 0));
-            Toast.makeText(getApplicationContext(), "A dica será exibida aqui e custa 10", Toast.LENGTH_LONG).show();
-        });
-
+        Intent intentTips = new Intent(this, Tips.class);
+        tips.setOnClickListener(v-> startActivity(intentTips));
     }
 }
 
