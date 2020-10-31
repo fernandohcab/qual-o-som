@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ProgressMenu extends AppCompatActivity {
 
@@ -18,7 +19,7 @@ public class ProgressMenu extends AppCompatActivity {
 
         // Set the activity fullscreen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         // Create the levels
         ArrayList<Answers> answers = new ArrayList<>();
@@ -36,8 +37,6 @@ public class ProgressMenu extends AppCompatActivity {
         gridView.setAdapter(adapter);
 
         ImageView backButton = findViewById(R.id.backButtonProgress);
-        backButton.setOnClickListener(v ->{
-            finish();
-        });
+        backButton.setOnClickListener(v -> finish());
     }
 }

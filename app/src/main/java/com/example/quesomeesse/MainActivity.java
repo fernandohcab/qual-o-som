@@ -3,23 +3,31 @@ package com.example.quesomeesse;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Objects;
 
 
 public class MainActivity extends AppCompatActivity {
 
     TextView lives, coins;
     SharedPreferences prefs;
+
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -31,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         coins = findViewById(R.id.coinsQty);
         prefs = getSharedPreferences("data", MODE_PRIVATE);
 
+        startService(new Intent(this, Reload.class));
 
         if(first_time_check()) {
             SharedPreferences.Editor editor = prefs.edit();
@@ -44,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         coins.setText("" + prefs.getInt("coins", 0));
         // enable fullscreen mode
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         // Go to the configuration activity
         Intent configurationIntent = new Intent(this, Configuration.class);
@@ -83,6 +92,15 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ProgressMenu.class);
         startGame.setOnClickListener(v -> startActivity(intent));
 
+        // Check in activity
+        ImageView checkIn = findViewById(R.id.checkIn);
+        Intent checkIntent = new Intent(this, LoginCount.class);
+        checkIn.setOnClickListener(v -> startActivity(checkIntent));
+
+        // Number of lives activity
+        ImageView numLives = findViewById(R.id.numOfLives);
+        Intent livesIntent = new Intent(this, Lives.class);
+        numLives.setOnClickListener(v -> startActivity(livesIntent));
 
     }
 

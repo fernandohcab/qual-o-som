@@ -19,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 public class Level extends AppCompatActivity {
 
     SharedPreferences prefs;
@@ -29,6 +31,7 @@ public class Level extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level);
 
+
         lives = findViewById(R.id.lives);
         coins = findViewById(R.id.coinsQty);
         prefs = getSharedPreferences("data", MODE_PRIVATE);
@@ -38,7 +41,7 @@ public class Level extends AppCompatActivity {
         Intent intent = getIntent();
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         ImageView playSoundButton = findViewById(R.id.playSoundButton);
         MediaPlayer mediaPlayer = MediaPlayer.create(this, intent.getExtras().getInt("audio"));
@@ -75,6 +78,7 @@ public class Level extends AppCompatActivity {
                         lives.setText("" + prefs.getInt("lives", 0));
                         Toast toast = Toast.makeText(context, "Resposta incorreta", duration);
                         toast.show();
+                        startService(new Intent(this, Reload.class));
                     } else {
                         Toast toast = Toast.makeText(context, "Suas vidas acabaram", duration);
                         toast.show();
@@ -105,6 +109,14 @@ public class Level extends AppCompatActivity {
         ImageView tips = findViewById(R.id.tipButton);
         Intent intentTips = new Intent(this, Tips.class);
         tips.setOnClickListener(v-> startActivity(intentTips));
+    }
+    @SuppressLint("SetTextI18n")
+    @Override
+    protected void onResume() {
+        super.onResume();
+        TextView coins = findViewById(R.id.coinsQty);
+        prefs = getSharedPreferences("data", MODE_PRIVATE);
+        coins.setText("" + prefs.getInt("coins", 0));
     }
 }
 
