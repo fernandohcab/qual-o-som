@@ -1,15 +1,12 @@
 package com.example.quesomeesse;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.Objects;
 
 public class Configuration extends AppCompatActivity {
@@ -18,8 +15,15 @@ public class Configuration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.configuration_activity);
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide();
+
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
 
         // Go back to the previous activity
         ImageView goBack = findViewById(R.id.fromConfigToMain);
@@ -61,4 +65,5 @@ public class Configuration extends AppCompatActivity {
             startActivity(Intent.createChooser(send, "Send email"));
         });
     }
+
 }

@@ -1,25 +1,14 @@
 package com.example.quesomeesse;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.util.Objects;
 
 
@@ -28,18 +17,23 @@ public class MainActivity extends AppCompatActivity {
     TextView lives, coins;
     SharedPreferences prefs;
 
-
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // enable fullscreen mode
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
         lives = findViewById(R.id.lives);
         coins = findViewById(R.id.coinsQty);
         prefs = getSharedPreferences("data", MODE_PRIVATE);
 
-        startService(new Intent(this, Reload.class));
+        if(prefs.getInt("lives", 0) < 10){
+            startService(new Intent(this, Reload.class));
+        }
 
         if(first_time_check()) {
             SharedPreferences.Editor editor = prefs.edit();
@@ -51,9 +45,16 @@ public class MainActivity extends AppCompatActivity {
 
         lives.setText("" + prefs.getInt("lives", 0));
         coins.setText("" + prefs.getInt("coins", 0));
-        // enable fullscreen mode
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        Objects.requireNonNull(getSupportActionBar()).hide();
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        lives.setText("" + prefs.getInt("lives", 0));
+        coins.setText("" + prefs.getInt("coins", 0));
 
         // Go to the configuration activity
         Intent configurationIntent = new Intent(this, Configuration.class);
@@ -102,17 +103,11 @@ public class MainActivity extends AppCompatActivity {
         Intent livesIntent = new Intent(this, Lives.class);
         numLives.setOnClickListener(v -> startActivity(livesIntent));
 
-    }
+        // Buy more coins
+        ImageView coinsView = findViewById(R.id.coinsButton);
+        Intent coinsIntent = new Intent(this, Coins.class);
+        coinsView.setOnClickListener(v -> startActivity(coinsIntent));
 
-    @SuppressLint("SetTextI18n")
-    @Override
-    protected void onResume() {
-        super.onResume();
-        TextView lives = findViewById(R.id.lives);
-        TextView coins = findViewById(R.id.coinsQty);
-        prefs = getSharedPreferences("data", MODE_PRIVATE);
-        lives.setText("" + prefs.getInt("lives", 0));
-        coins.setText("" + prefs.getInt("coins", 0));
     }
 
     private boolean first_time_check() {
@@ -120,4 +115,5 @@ public class MainActivity extends AppCompatActivity {
         String first = prefs.getString("first", null);
         return first == null;
     }
+
 }

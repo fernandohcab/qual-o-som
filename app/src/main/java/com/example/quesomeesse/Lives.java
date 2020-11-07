@@ -4,12 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.view.WindowManager;
-import android.widget.TextView;
-
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 public class Lives extends AppCompatActivity {
 
@@ -24,6 +20,12 @@ public class Lives extends AppCompatActivity {
         // enable fullscreen mode
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide();
+
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
 
     }
 }

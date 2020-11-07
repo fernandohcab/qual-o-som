@@ -6,14 +6,12 @@ import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.os.HandlerThread;
 import android.os.IBinder;
-import android.widget.Toast;
-
-import java.util.concurrent.TimeUnit;
 
 public class Reload extends Service {
 
     private long tempo;
     SharedPreferences prefs;
+
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -34,7 +32,7 @@ public class Reload extends Service {
         if (prefs.getInt("lives", 0) == 10) {
             stopService(new Intent(this, Reload.class));
         } else {
-            new CountDownTimer(30000, 1000) {
+            new CountDownTimer(5000, 1000) {
                 public void onTick(long millisUntilFinished) {
                     tempo = millisUntilFinished;
                 }

@@ -125,14 +125,15 @@
 
     <TextView
         android:id="@+id/lives"
-        android:layout_width="12dp"
+        android:layout_width="18dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="161dp"
-        android:layout_marginLeft="161dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="158dp"
+        android:layout_marginLeft="158dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
         android:textColor="@color/white" />
 
     <ImageView
@@ -152,16 +153,17 @@
 
     <TextView
         android:id="@+id/coinsQty"
-        android:layout_width="wrap_content"
+        android:layout_width="37dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginStart="156dp"
         android:layout_marginLeft="156dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="157dp"
-        android:layout_marginRight="157dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="138dp"
+        android:layout_marginRight="138dp"
+        android:gravity="center"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

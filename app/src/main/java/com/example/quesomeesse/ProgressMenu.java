@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.ListView;
-
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -36,6 +34,7 @@ public class ProgressMenu extends AppCompatActivity {
         GridView gridView = findViewById(R.id.gridView);
         gridView.setAdapter(adapter);
 
+        // Go back to main menu
         ImageView backButton = findViewById(R.id.backButtonProgress);
         backButton.setOnClickListener(v -> finish());
     }

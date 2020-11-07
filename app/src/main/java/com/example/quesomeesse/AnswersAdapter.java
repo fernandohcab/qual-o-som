@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,8 +27,9 @@ public class AnswersAdapter extends ArrayAdapter<Answers> {
         }
 
         Answers currentAnswer = getItem(position);
-        TextView chooseLevel= listItemView.findViewById(R.id.singleLevel);
-        chooseLevel.setText(currentAnswer.getLevel());
+        RelativeLayout chooseLevel= listItemView.findViewById(R.id.singleLevel);
+        TextView levelNumber = listItemView.findViewById(R.id.levelNumber);
+        levelNumber.setText(currentAnswer.getLevel());
         chooseLevel.setOnClickListener(v -> {
                 Intent intent = new Intent(v.getContext(), Level.class);
                 intent.putExtra("level", currentAnswer.getLevel());

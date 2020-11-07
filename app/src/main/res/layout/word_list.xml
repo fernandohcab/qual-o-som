@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@mipmap/background"
-    >
+    tools:context=".Level">
 
     <LinearLayout
         android:id="@+id/linearDown"
@@ -22,19 +22,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:numColumns="3" />
+            android:numColumns="4"
+            android:verticalSpacing="-1dp"
+            android:horizontalSpacing="-30dp"
+            android:columnWidth="90dp"
+            android:stretchMode="columnWidth"/>
     </LinearLayout>
 
     <ImageView
         android:id="@+id/backButtonProgress"
-        android:layout_width="84dp"
-        android:layout_height="78dp"
+        android:layout_width="62dp"
+        android:layout_height="67dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp"
-        app:srcCompat="@mipmap/backat"
-        android:contentDescription="@string/backButton" />
+        android:contentDescription="@string/backButton"
+        app:srcCompat="@mipmap/backat" />
 </RelativeLayout>

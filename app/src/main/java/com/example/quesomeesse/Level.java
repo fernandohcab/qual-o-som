@@ -1,24 +1,18 @@
 package com.example.quesomeesse;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.Objects;
 
 public class Level extends AppCompatActivity {
@@ -35,17 +29,29 @@ public class Level extends AppCompatActivity {
         lives = findViewById(R.id.lives);
         coins = findViewById(R.id.coinsQty);
         prefs = getSharedPreferences("data", MODE_PRIVATE);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    protected void onResume() {
+        super.onResume();
+
         lives.setText("" + prefs.getInt("lives", 0));
         coins.setText("" + prefs.getInt("coins", 0));
 
         Intent intent = getIntent();
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        Objects.requireNonNull(getSupportActionBar()).hide();
-
         ImageView playSoundButton = findViewById(R.id.playSoundButton);
         MediaPlayer mediaPlayer = MediaPlayer.create(this, intent.getExtras().getInt("audio"));
-        playSoundButton.setOnClickListener(v -> mediaPlayer.start());
+        playSoundButton.setOnClickListener(v -> {
+            if(!mediaPlayer.isPlaying()){
+                mediaPlayer.start();
+            }
+        });
 
         // Finish the activity and go back to the main menu
         ImageView backButton = findViewById(R.id.backButton);
@@ -66,6 +72,7 @@ public class Level extends AppCompatActivity {
                 coins.setText("" + prefs.getInt("coins", 0));
                 Toast toast = Toast.makeText(context, "Resposta correta", duration);
                 toast.show();
+
                 finish();
             } else {
                 try {
@@ -84,9 +91,7 @@ public class Level extends AppCompatActivity {
                         toast.show();
                     }
                 } catch (NumberFormatException e) {
-                    //int numOfLives = Integer.parseInt(tv.getText().toString());
-                    //  numOfLives -= 1;
-                    //tv.setText(Integer.toString(numOfLives));
+                    // ver o que fazer aqui
                 }
             }
         });
@@ -109,24 +114,18 @@ public class Level extends AppCompatActivity {
         ImageView tips = findViewById(R.id.tipButton);
         Intent intentTips = new Intent(this, Tips.class);
         tips.setOnClickListener(v-> startActivity(intentTips));
+
+        // Buy more lives
+        ImageView lives = findViewById(R.id.buyLives);
+        Intent intentLives = new Intent(this, Lives.class);
+        lives.setOnClickListener(v -> startActivity(intentLives));
+
+        // Buy more coins
+        ImageView coinsView = findViewById(R.id.coinsButton);
+        Intent intentCoins = new Intent(this, Coins.class);
+        coinsView.setOnClickListener(v -> startActivity(intentCoins));
+
     }
-    @SuppressLint("SetTextI18n")
-    @Override
-    protected void onResume() {
-        super.onResume();
-        TextView coins = findViewById(R.id.coinsQty);
-        prefs = getSharedPreferences("data", MODE_PRIVATE);
-        coins.setText("" + prefs.getInt("coins", 0));
-    }
+
 }
 
-/* estudar esse código
-* private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
-        @Override
-        public void onCompletion(MediaPlayer mediaPlayer) {
-            // Now that the sound file has finished playing, release the media player resources.
-            releaseMediaPlayer();
-        }
-    };
-*
-* */

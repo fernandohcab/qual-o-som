@@ -5,15 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.Objects;
 
 public class Tips extends AppCompatActivity {
+
+    SharedPreferences prefs;
+    TextView qty, showTip;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -24,13 +25,21 @@ public class Tips extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
-        SharedPreferences prefs = getSharedPreferences("data", MODE_PRIVATE);
+        prefs = getSharedPreferences("data", MODE_PRIVATE);
+        qty = findViewById(R.id.coinsQty);
+        showTip = findViewById(R.id.showTip);
+
+        qty.setText("" + prefs.getInt("coins", 0));
+    }
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    public void onResume(){
+        super.onResume();
 
         // Buy tip
         ImageView yes = findViewById(R.id.yesButton);
-        TextView qty = findViewById(R.id.coinsQty);
-        TextView showTip = findViewById(R.id.showTip);
-        qty.setText("" + prefs.getInt("coins", 0));
+
         yes.setOnClickListener(v -> {
             if((prefs.getInt("coins", 0) - 10 >= 0) || (prefs.getInt("coins", 0) - 15 >= 0) ) {
                 SharedPreferences.Editor editor = prefs.edit();
@@ -51,5 +60,7 @@ public class Tips extends AppCompatActivity {
         // Do not buy
         ImageView no = findViewById(R.id.noButton);
         no.setOnClickListener(v -> finish());
+
     }
+
 }

@@ -9,15 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QueSomEEsse">
+        <activity
+            android:name=".Coins"
+            android:screenOrientation="portrait" />
+
         <service
             android:name=".Reload"
             android:enabled="true"
-            android:exported="false"/>
-
-        <activity android:name=".Lives"
-            android:screenOrientation="portrait"/>
-
-
+            android:exported="false" />
+        <activity
+            android:name=".Lives"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Tips"
             android:screenOrientation="portrait" />
@@ -38,7 +40,6 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
