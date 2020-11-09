@@ -40,6 +40,12 @@ public class MainActivity extends AppCompatActivity {
             editor.putInt("lives", 10);
             editor.putInt("coins", 150);
             editor.putString("first", "true");
+            editor.putBoolean("1", false);
+            editor.putBoolean("2", false);
+            editor.putBoolean("3", false);
+            editor.putBoolean("4", false);
+            editor.putBoolean("5", false);
+            editor.putBoolean("6", false);
             editor.apply();
         }
 

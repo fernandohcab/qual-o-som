@@ -1,6 +1,8 @@
 package com.example.quesomeesse;
 
-public class Answers{
+import java.io.Serializable;
+
+public class Answers implements Serializable {
 
     // The level selected
     private final String level;
@@ -8,11 +10,14 @@ public class Answers{
     private final String answer;
     // The audio played
     private final int audio;
+    // Done or undone
+    private final boolean state;
 
-    public Answers(String currentLevel, String correctAnswer, int audioID){
+    public Answers(String currentLevel, String correctAnswer, int audioID, boolean st){
         this.level = currentLevel;
         this.answer = correctAnswer;
         this.audio = audioID;
+        this.state = st;
     }
 
     public String getLevel(){
@@ -26,4 +31,18 @@ public class Answers{
     public int getAudio(){
         return this.audio;
     }
+
+    public boolean getState(){
+        return this.state;
+    }
+
+    public int getImage(){
+        if(this.getState()){
+            return R.mipmap.done;
+        }
+        else{
+            return R.mipmap.undone;
+        }
+    }
+
 }

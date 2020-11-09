@@ -1,5 +1,6 @@
 package com.example.quesomeesse;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ public class AnswersAdapter extends ArrayAdapter<Answers> {
         super(context, 0, answers);
     }
 
+    @SuppressLint("SetTextI18n")
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         View listItemView = convertView;
@@ -29,12 +31,12 @@ public class AnswersAdapter extends ArrayAdapter<Answers> {
         Answers currentAnswer = getItem(position);
         RelativeLayout chooseLevel= listItemView.findViewById(R.id.singleLevel);
         TextView levelNumber = listItemView.findViewById(R.id.levelNumber);
-        levelNumber.setText(currentAnswer.getLevel());
+        ImageView imageLevel = listItemView.findViewById(R.id.singleImage);
+        imageLevel.setImageResource(currentAnswer.getImage());
+        levelNumber.setText("" + currentAnswer.getLevel());
         chooseLevel.setOnClickListener(v -> {
                 Intent intent = new Intent(v.getContext(), Level.class);
-                intent.putExtra("level", currentAnswer.getLevel());
-                intent.putExtra("answer", currentAnswer.getAnswer());
-                intent.putExtra("audio", currentAnswer.getAudio());
+                intent.putExtra("state", currentAnswer);
                 v.getContext().startActivity(intent);
         });
 

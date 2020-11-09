@@ -2,6 +2,7 @@ package com.example.quesomeesse;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +14,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.Serializable;
 import java.util.Objects;
 
 public class Level extends AppCompatActivity {
@@ -44,9 +47,10 @@ public class Level extends AppCompatActivity {
         coins.setText("" + prefs.getInt("coins", 0));
 
         Intent intent = getIntent();
+        Answers status = (Answers) intent.getSerializableExtra("state");
 
         ImageView playSoundButton = findViewById(R.id.playSoundButton);
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, intent.getExtras().getInt("audio"));
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, status.getAudio());
         playSoundButton.setOnClickListener(v -> {
             if(!mediaPlayer.isPlaying()){
                 mediaPlayer.start();
@@ -65,14 +69,14 @@ public class Level extends AppCompatActivity {
             CharSequence text = answer.getText().toString().toLowerCase().trim();
             int duration = Toast.LENGTH_SHORT;
 
-            if (text.equals(intent.getExtras().getString("answer"))) {
+            if (text.equals(status.getAnswer())) {
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putInt("coins", prefs.getInt("coins", 0) + 30);
+                editor.putBoolean(status.getLevel(), true);
                 editor.apply();
                 coins.setText("" + prefs.getInt("coins", 0));
                 Toast toast = Toast.makeText(context, "Resposta correta", duration);
                 toast.show();
-
                 finish();
             } else {
                 try {
@@ -85,7 +89,9 @@ public class Level extends AppCompatActivity {
                         lives.setText("" + prefs.getInt("lives", 0));
                         Toast toast = Toast.makeText(context, "Resposta incorreta", duration);
                         toast.show();
-                        startService(new Intent(this, Reload.class));
+                       // if(isMyServiceRunning(Reload.class)){
+                            startService(new Intent(this, Reload.class));
+                        //}
                     } else {
                         Toast toast = Toast.makeText(context, "Suas vidas acabaram", duration);
                         toast.show();
@@ -125,6 +131,18 @@ public class Level extends AppCompatActivity {
         Intent intentCoins = new Intent(this, Coins.class);
         coinsView.setOnClickListener(v -> startActivity(intentCoins));
 
+    }
+
+    private boolean isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (Reload.class.getName().equals(service.service.getClassName())) {
+                Toast.makeText(getApplicationContext(), "Funcionando", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        }
+        Toast.makeText(getApplicationContext(), "Parado", Toast.LENGTH_SHORT).show();
+        return false;
     }
 
 }
