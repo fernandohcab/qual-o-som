@@ -51,12 +51,6 @@ public class Configuration extends AppCompatActivity {
             }
         });
 
-        // Change the language of the application
-        TextView changeLanguage = findViewById(R.id.changeLanguage);
-        changeLanguage.setOnClickListener(v -> {
-
-        });
-
         // Report any bugs that were found
         TextView report = findViewById(R.id.reportBugs);
         report.setOnClickListener(v -> {

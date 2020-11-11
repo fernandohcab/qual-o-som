@@ -89,10 +89,10 @@ public class Level extends AppCompatActivity {
                         lives.setText("" + prefs.getInt("lives", 0));
                         Toast toast = Toast.makeText(context, "Resposta incorreta", duration);
                         toast.show();
-                       // if(isMyServiceRunning(Reload.class)){
+                        if(!isMyServiceRunning(Reload.class)) {
                             startService(new Intent(this, Reload.class));
-                        //}
-                    } else {
+                        }
+                        } else {
                         Toast toast = Toast.makeText(context, "Suas vidas acabaram", duration);
                         toast.show();
                     }
@@ -104,8 +104,9 @@ public class Level extends AppCompatActivity {
 
         // Skip the current level
         ImageView skip = findViewById(R.id.nextLevelButton);
+        Intent intentSkip = new Intent(this, SkipLevel.class);
         skip.setOnClickListener(v -> {
-            if( (prefs.getInt("coins", 0) - 10 > 0) || (prefs.getInt("coins", 0) - 15 > 0) ) {
+          /*  if( (prefs.getInt("coins", 0) - 10 > 0) || (prefs.getInt("coins", 0) - 15 > 0) ) {
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putInt("coins", prefs.getInt("coins", 0) - 15);
                 editor.apply();
@@ -113,7 +114,8 @@ public class Level extends AppCompatActivity {
             }
             else{
                 Toast.makeText(getApplicationContext(), "Você não tem mais moedas", Toast.LENGTH_SHORT).show();
-            }
+            }*/
+            startActivity(intentSkip);
         });
 
         // Show tip button
@@ -136,12 +138,10 @@ public class Level extends AppCompatActivity {
     private boolean isMyServiceRunning(Class<?> serviceClass) {
         ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-            if (Reload.class.getName().equals(service.service.getClassName())) {
-                Toast.makeText(getApplicationContext(), "Funcionando", Toast.LENGTH_SHORT).show();
+            if (serviceClass.getName().equals(service.service.getClassName())) {
                 return true;
             }
         }
-        Toast.makeText(getApplicationContext(), "Parado", Toast.LENGTH_SHORT).show();
         return false;
     }
 

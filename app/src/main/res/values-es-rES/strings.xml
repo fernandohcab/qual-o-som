@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">¿Qué sonido es este?</string>
+    <string name="main_name">¿Qué sonido es este?</string>
+    <string name="content_description_start_game">Botón de inicio del juego</string>
+    <string name="content_description_sound">Botón de inicio del sonido</string>
+    <string name="checkin">Botón de check in diario</string>
+    <string name="send">Enviar</string>
+    <string name="backButton">Botón de regreso</string>
+    <string name="coinsButton">Botón de monedas</string>
+    <string name="nextLevelButton">Botón para el siguiente nivel</string>
+    <string name="tipButton">Botón de consejos</string>
+    <string name="playSoundButton">Botón de habilitar música</string>
+    <string name="configurationButton">Botón de configuración</string>
+    <string name="numberOfLives">Número de vidas</string>
+    <string name="noAd">Eliminar anuncios y tener vidas ilimitadas</string>
+    <string name="shareButton">Botón de compartir</string>
+    <string name="answer">Botón de enviar la respuesta</string>
+    <string name="review">Califica la aplicación en Play Store</string>
+    <string name="changeLanguage">Elige el idioma</string>
+    <string name="bug">Reportar un error</string>
+    <string name="mute">Sin sonido</string>
+    <string name="unmute">Botón de habilitar música</string>
+    <string name="buytip">¿Comprar un consejo por 10 monedas?</string>
+    <string name="yes">Si, comprar el consejo</string>
+    <string name="no">No comprar el consejo</string>
+    <string name="frame">Marco de botón</string>
+    <string name="title_activity_reload_lives">Recargar vidas</string>
+    <string name="level">Elige el nivel</string>
+    <string name="skip_level">Saltar nivel</string>
+</resources>

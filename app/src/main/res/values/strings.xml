@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Que som e esse</string>
-    <string name="main_name">Que<br /> som<br /> é <br /> esse<br /></string>
-    <string name="content_description_start_game"> Start game button</string>
+    <string name="app_name">What sound is this?</string>
+    <string name="main_name">What sound is this?</string>
+    <string name="content_description_start_game">Start game button</string>
     <string name="content_description_sound">Play sound button</string>
     <string name="checkin">Check in button</string>
     <string name="send">Send</string>
@@ -9,7 +9,7 @@
     <string name="coinsButton">Coins button</string>
     <string name="nextLevelButton">Next level button</string>
     <string name="tipButton">Tip button</string>
-    <string name="playSoundButton">Play sound button</string>
+    <string name="playSoundButton">Allow music button</string>
     <string name="configurationButton">Configuration button</string>
     <string name="numberOfLives">Number of lives</string>
     <string name="noAd">Remove the ads and get unlimited lives</string>
@@ -18,19 +18,13 @@
     <string name="review">Review the app on Play Store</string>
     <string name="changeLanguage">Change the language</string>
     <string name="bug">Report a bug</string>
-    <string name="mute">Mute button</string>
+    <string name="mute">Mute</string>
     <string name="unmute">Unmute button</string>
-    <string name="buytip">Comprar uma dica por 10 moedas?</string>
-    <string name="yes">Buy tips</string>
-    <string name="no">Don\'t buy tips</string>
+    <string name="buytip">Buy a tip for 10 coins?</string>
+    <string name="yes">Yes, buy the tip</string>
+    <string name="no">Don\'t buy the tip</string>
     <string name="frame">Frame of the button</string>
-    <string name="title_activity_reload_lives">ReloadLives</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-    <string name="level">Choose level</string>
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_reload_lives">Reload lives</string>
+    <string name="level">Choose the level</string>
+    <string name="skip_level">Skip level</string>
 </resources>

@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.WindowManager;
+import android.widget.TextView;
+
+import java.util.Locale;
 import java.util.Objects;
 
 public class LoginCount extends AppCompatActivity {
@@ -15,7 +18,6 @@ public class LoginCount extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide();
-
 
     }
 }

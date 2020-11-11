@@ -18,8 +18,7 @@ public class Reload extends Service {
     }
     @Override
     public void onCreate() {
-        HandlerThread thread = new HandlerThread("ServiceStartArguments");
-        thread.start();
+
     }
     @Override
     public void onDestroy() {
@@ -28,22 +27,28 @@ public class Reload extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        prefs = getSharedPreferences("data", MODE_PRIVATE);
-        if (prefs.getInt("lives", 0) == 10) {
-            stopService(new Intent(this, Reload.class));
-        } else {
-            new CountDownTimer(5000, 1000) {
-                public void onTick(long millisUntilFinished) {
-                    tempo = millisUntilFinished;
-                }
 
-                public void onFinish() {
-                    SharedPreferences.Editor editor = prefs.edit();
-                    editor.putInt("lives", prefs.getInt("lives", 0) + 1);
-                    editor.apply();
+        prefs = getSharedPreferences("data", MODE_PRIVATE);
+
+        // Reload the lives until it is 10
+        new Thread(() -> {
+            while(true)
+            {
+                try {
+                    if (prefs.getInt("lives", 0) < 10) {
+                        Thread.sleep(5000);
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.putInt("lives", prefs.getInt("lives", 0) + 1);
+                        editor.apply();
+                    }
+
+                } catch (InterruptedException e) {
+
+                    e.printStackTrace();
                 }
-            }.start();
-        }
+            }
+        }).start();
+
         return START_STICKY;
     }
 }

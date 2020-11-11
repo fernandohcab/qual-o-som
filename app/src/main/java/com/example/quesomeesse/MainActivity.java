@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
         coins = findViewById(R.id.coinsQty);
         prefs = getSharedPreferences("data", MODE_PRIVATE);
 
-        if(prefs.getInt("lives", 0) < 10){
+       if(prefs.getInt("lives", 0) < 10){
             startService(new Intent(this, Reload.class));
-        }
+       }
 
         if(first_time_check()) {
             SharedPreferences.Editor editor = prefs.edit();

@@ -6,29 +6,29 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Objects;
 
-public class Tips extends AppCompatActivity {
+public class SkipLevel extends AppCompatActivity {
 
     SharedPreferences prefs;
-    TextView qty, showTip;
+    TextView qty;
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tips);
+        setContentView(R.layout.activity_skip_level);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
         prefs = getSharedPreferences("data", MODE_PRIVATE);
         qty = findViewById(R.id.coinsQty);
-        showTip = findViewById(R.id.showTip);
 
         qty.setText("" + prefs.getInt("coins", 0));
     }
@@ -47,7 +47,6 @@ public class Tips extends AppCompatActivity {
                 editor.putInt("coins", prefs.getInt("coins", 0) - 10);
                 editor.apply();
                 qty.setText("" + prefs.getInt("coins", 0));
-                showTip.setText("A dica será mostrada aqui");
             }
             else{
                 Toast.makeText(getApplicationContext(), "Você não tem moedas o suficiente", Toast.LENGTH_LONG).show();
@@ -63,7 +62,7 @@ public class Tips extends AppCompatActivity {
         no.setOnClickListener(v -> finish());
 
         // Buy more coins
-        ImageView coinsView = findViewById(R.id.imageView11);
+        ImageView coinsView = findViewById(R.id.buyCoins);
         Intent coinsIntent = new Intent(this, Coins.class);
         coinsView.setOnClickListener(v -> startActivity(coinsIntent));
 
