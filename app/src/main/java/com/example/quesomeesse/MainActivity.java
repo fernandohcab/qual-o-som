@@ -36,16 +36,17 @@ public class MainActivity extends AppCompatActivity {
        }
 
         if(first_time_check()) {
+            int a = 1;
             SharedPreferences.Editor editor = prefs.edit();
             editor.putInt("lives", 10);
             editor.putInt("coins", 150);
             editor.putString("first", "true");
-            editor.putBoolean("1", false);
-            editor.putBoolean("2", false);
-            editor.putBoolean("3", false);
-            editor.putBoolean("4", false);
-            editor.putBoolean("5", false);
-            editor.putBoolean("6", false);
+            editor.putInt("1", 2);
+            editor.putInt("2", 1);
+            editor.putInt("3", 1);
+            editor.putInt("4", 1);
+            editor.putInt("5", 1);
+            editor.putInt("6", 1);
             editor.apply();
         }
 

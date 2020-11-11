@@ -35,9 +35,11 @@ public class AnswersAdapter extends ArrayAdapter<Answers> {
         imageLevel.setImageResource(currentAnswer.getImage());
         levelNumber.setText("" + currentAnswer.getLevel());
         chooseLevel.setOnClickListener(v -> {
+            if(currentAnswer.getImage() == R.mipmap.undone || currentAnswer.getImage() == R.mipmap.done) {
                 Intent intent = new Intent(v.getContext(), Level.class);
                 intent.putExtra("state", currentAnswer);
                 v.getContext().startActivity(intent);
+            }
         });
 
         return listItemView;

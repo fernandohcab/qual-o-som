@@ -5,22 +5,22 @@ import java.io.Serializable;
 public class Answers implements Serializable {
 
     // The level selected
-    private final String level;
+    private final int level;
     // The expected answer
     private final String answer;
     // The audio played
     private final int audio;
     // Done or undone
-    private final boolean state;
+    private final int state;
 
-    public Answers(String currentLevel, String correctAnswer, int audioID, boolean st){
+    public Answers(int currentLevel, String correctAnswer, int audioID, int st){
         this.level = currentLevel;
         this.answer = correctAnswer;
         this.audio = audioID;
         this.state = st;
     }
 
-    public String getLevel(){
+    public int getLevel(){
         return this.level;
     }
 
@@ -32,17 +32,19 @@ public class Answers implements Serializable {
         return this.audio;
     }
 
-    public boolean getState(){
+    public int getState(){
         return this.state;
     }
 
     public int getImage(){
-        if(this.getState()){
+        if(this.getState() == 1){
+            return R.mipmap.heartat;
+        }
+        else if(this.getState() == 2){
+            return R.mipmap.undone;
+        } else if(this.getState() == 3){
             return R.mipmap.done;
         }
-        else{
-            return R.mipmap.undone;
-        }
+        return 0;
     }
-
 }

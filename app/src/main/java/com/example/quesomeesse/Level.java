@@ -72,7 +72,8 @@ public class Level extends AppCompatActivity {
             if (text.equals(status.getAnswer())) {
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putInt("coins", prefs.getInt("coins", 0) + 30);
-                editor.putBoolean(status.getLevel(), true);
+                editor.putInt(Integer.toString(status.getLevel()), 3);
+                editor.putInt(Integer.toString(status.getLevel() + 1), 2);
                 editor.apply();
                 coins.setText("" + prefs.getInt("coins", 0));
                 Toast toast = Toast.makeText(context, "Resposta correta", duration);

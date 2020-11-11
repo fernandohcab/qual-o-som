@@ -40,27 +40,31 @@ public class ProgressMenu extends AppCompatActivity {
         // Create the levels
         ArrayList<Answers> answers = new ArrayList<>();
         if(Locale.getDefault().getDisplayLanguage().toLowerCase().equals("português")) {
-            answers.add(new Answers("1", "oi amor", R.raw.oiamor, prefs.getBoolean("1", false)));
-            answers.add(new Answers("2", "fase 2", R.raw.fase2, prefs.getBoolean("2", false)));
-            answers.add(new Answers("3", "fase 3", R.raw.fase3, prefs.getBoolean("3", false)));
-            answers.add(new Answers("4", "fase 3", R.raw.fase3, prefs.getBoolean("4", false)));
-            answers.add(new Answers("5", "fase 3", R.raw.fase3, prefs.getBoolean("5", false)));
-            answers.add(new Answers("6", "fase 3", R.raw.fase3, prefs.getBoolean("6", false)));
+            answers.add(new Answers(1, "oi amor", R.raw.oiamor, prefs.getInt("1", 0)));
+            answers.add(new Answers(2, "fase 2", R.raw.fase2, prefs.getInt("2", 0)));
+            answers.add(new Answers(3, "fase 3", R.raw.fase3, prefs.getInt("3", 0)));
+            answers.add(new Answers(4, "fase 3", R.raw.fase3, prefs.getInt("4", 0)));
+            answers.add(new Answers(5, "fase 3", R.raw.fase3, prefs.getInt("5", 0)));
+            answers.add(new Answers(6, "fase 3", R.raw.fase3, prefs.getInt("6", 0)));
 
-        } else if(Locale.getDefault().getDisplayLanguage().toLowerCase().equals("english")){
-            answers.add(new Answers("1", "hello honey", R.raw.oiamor, prefs.getBoolean("1", false)));
-            answers.add(new Answers("2", "phase 2", R.raw.fase2, prefs.getBoolean("2", false)));
-            answers.add(new Answers("3", "phase 3", R.raw.fase3, prefs.getBoolean("3", false)));
-            answers.add(new Answers("4", "phase 3", R.raw.fase3, prefs.getBoolean("4", false)));
-            answers.add(new Answers("5", "phase 3", R.raw.fase3, prefs.getBoolean("5", false)));
-            answers.add(new Answers("6", "phase 3", R.raw.fase3, prefs.getBoolean("6", false)));
-        } else if(Locale.getDefault().getDisplayLanguage().toLowerCase().equals("español")){
-            answers.add(new Answers("1", "hola amor", R.raw.oiamor, prefs.getBoolean("1", false)));
-            answers.add(new Answers("2", "fase 2", R.raw.fase2, prefs.getBoolean("2", false)));
-            answers.add(new Answers("3", "fase 3", R.raw.fase3, prefs.getBoolean("3", false)));
-            answers.add(new Answers("4", "fase 3", R.raw.fase3, prefs.getBoolean("4", false)));
-            answers.add(new Answers("5", "fase 3", R.raw.fase3, prefs.getBoolean("5", false)));
-            answers.add(new Answers("6", "fase 3", R.raw.fase3, prefs.getBoolean("6", false)));
+        }
+
+        else if(Locale.getDefault().getDisplayLanguage().toLowerCase().equals("english")){
+            answers.add(new Answers(1, "hello honey", R.raw.oiamor, prefs.getInt("1", 0)));
+            answers.add(new Answers(2, "phase 2", R.raw.fase2, prefs.getInt("2", 0)));
+            answers.add(new Answers(3, "phase 3", R.raw.fase3, prefs.getInt("3", 0)));
+            answers.add(new Answers(4, "phase 3", R.raw.fase3, prefs.getInt("4", 0)));
+            answers.add(new Answers(5, "phase 3", R.raw.fase3, prefs.getInt("5", 0)));
+            answers.add(new Answers(6, "phase 3", R.raw.fase3, prefs.getInt("6", 0)));
+        }
+
+        else if(Locale.getDefault().getDisplayLanguage().toLowerCase().equals("español")){
+            answers.add(new Answers(1, "hola amor", R.raw.oiamor, prefs.getInt("1", 0)));
+            answers.add(new Answers(2, "fase 2", R.raw.fase2, prefs.getInt("2", 0)));
+            answers.add(new Answers(3, "fase 3", R.raw.fase3, prefs.getInt("3", 0)));
+            answers.add(new Answers(4, "fase 3", R.raw.fase3, prefs.getInt("4", 0)));
+            answers.add(new Answers(5, "fase 3", R.raw.fase3, prefs.getInt("5", 0)));
+            answers.add(new Answers(6, "fase 3", R.raw.fase3, prefs.getInt("6", 0)));
         }
         AnswersAdapter adapter = new AnswersAdapter(this, answers);
 
