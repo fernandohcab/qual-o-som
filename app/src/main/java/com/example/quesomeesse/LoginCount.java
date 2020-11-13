@@ -1,12 +1,8 @@
 package com.example.quesomeesse;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.WindowManager;
-import android.widget.TextView;
-
-import java.util.Locale;
 import java.util.Objects;
 
 public class LoginCount extends AppCompatActivity {

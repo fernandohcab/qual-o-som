@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
        }
 
         if(first_time_check()) {
-            int a = 1;
             SharedPreferences.Editor editor = prefs.edit();
             editor.putInt("lives", 10);
             editor.putInt("coins", 150);

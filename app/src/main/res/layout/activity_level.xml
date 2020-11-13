@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Level"
-    android:background="@mipmap/background">
+    android:background="@drawable/gradient_background">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -38,9 +38,13 @@
             android:layout_marginStart="321dp"
             android:layout_marginLeft="321dp"
             android:layout_marginTop="360dp"
-            android:backgroundTint="@color/white"
             android:text="@string/send"
-            android:textColor="#506fa9" />
+            android:background="@drawable/button_style"
+            app:backgroundTint="@color/white"
+            android:textColor="#506fa9"
+            tools:ignore="RelativeOverlap" />
+
+
 
         <ImageView
             android:id="@+id/buyLives"

@@ -1,12 +1,10 @@
 package com.example.quesomeesse;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -44,7 +42,7 @@ public class SkipLevel extends AppCompatActivity {
         yes.setOnClickListener(v -> {
             if((prefs.getInt("coins", 0) - 10 >= 0) || (prefs.getInt("coins", 0) - 15 >= 0) ) {
                 SharedPreferences.Editor editor = prefs.edit();
-                editor.putInt("coins", prefs.getInt("coins", 0) - 10);
+                editor.putInt("coins", prefs.getInt("coins", 0) - 20);
                 editor.apply();
                 qty.setText("" + prefs.getInt("coins", 0));
             }
