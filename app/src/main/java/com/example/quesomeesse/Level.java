@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -60,9 +61,24 @@ public class Level extends AppCompatActivity {
         ImageView backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(v -> finish());
 
-        // Send the answer
-        Button sendAnswer = findViewById(R.id.send);
-        sendAnswer.setOnClickListener(v -> {
+        // Skip the current level
+        ImageView skip = findViewById(R.id.nextLevelButton);
+        Intent intentSkip = new Intent(this, SkipLevel.class);
+        skip.setOnClickListener(v -> {
+          /*  if( (prefs.getInt("coins", 0) - 10 > 0) || (prefs.getInt("coins", 0) - 15 > 0) ) {
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putInt("coins", prefs.getInt("coins", 0) - 15);
+                editor.apply();
+                coins.setText("" + prefs.getInt("coins", 0));
+            }
+            else{
+                Toast.makeText(getApplicationContext(), "Você não tem mais moedas", Toast.LENGTH_SHORT).show();
+            }*/
+            startActivity(intentSkip);
+        });
+
+        Button button = findViewById(R.id.send);
+        button.setOnClickListener(v -> {
             EditText answer = findViewById(R.id.answer);
             Context context = getApplicationContext();
             CharSequence text = answer.getText().toString().toLowerCase().trim();
@@ -92,7 +108,7 @@ public class Level extends AppCompatActivity {
                         if(!isMyServiceRunning(Reload.class)) {
                             startService(new Intent(this, Reload.class));
                         }
-                        } else {
+                    } else {
                         Toast toast = Toast.makeText(context, "Suas vidas acabaram", duration);
                         toast.show();
                     }
@@ -100,22 +116,6 @@ public class Level extends AppCompatActivity {
                     // ver o que fazer aqui
                 }
             }
-        });
-
-        // Skip the current level
-        ImageView skip = findViewById(R.id.nextLevelButton);
-        Intent intentSkip = new Intent(this, SkipLevel.class);
-        skip.setOnClickListener(v -> {
-          /*  if( (prefs.getInt("coins", 0) - 10 > 0) || (prefs.getInt("coins", 0) - 15 > 0) ) {
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putInt("coins", prefs.getInt("coins", 0) - 15);
-                editor.apply();
-                coins.setText("" + prefs.getInt("coins", 0));
-            }
-            else{
-                Toast.makeText(getApplicationContext(), "Você não tem mais moedas", Toast.LENGTH_SHORT).show();
-            }*/
-            startActivity(intentSkip);
         });
 
         // Show tip button
@@ -144,6 +144,6 @@ public class Level extends AppCompatActivity {
         }
         return false;
     }
-
 }
+
 
