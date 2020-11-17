@@ -18,10 +18,13 @@ import android.widget.Toast;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Level extends AppCompatActivity {
+public class Level extends AppCompatActivity implements View.OnClickListener {
 
     SharedPreferences prefs;
     TextView lives, coins;
+    MediaPlayer mediaPlayer;
+    Button b1, b2, b3, b4;
+    Answers status;
 
     @SuppressLint("SetTextI18n")
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,19 @@ public class Level extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
+        Intent intent = getIntent();
+        status = (Answers) intent.getSerializableExtra("state");
+        mediaPlayer = MediaPlayer.create(this, status.getAudio());
+
+
+        b1 = findViewById(R.id.button1);
+        b1.setText(status.getAnswer());
+        b2 = findViewById(R.id.button2);
+        b2.setText(status.getOp2());
+        b3 = findViewById(R.id.button3);
+        b3.setText(status.getOp3());
+        b4 = findViewById(R.id.button4);
+        b4.setText(status.getOp4());
     }
 
     @SuppressLint("SetTextI18n")
@@ -47,15 +63,17 @@ public class Level extends AppCompatActivity {
         coins.setText("" + prefs.getInt("coins", 0));
 
         Intent intent = getIntent();
-        Answers status = (Answers) intent.getSerializableExtra("state");
 
         ImageView playSoundButton = findViewById(R.id.playSoundButton);
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, status.getAudio());
         playSoundButton.setOnClickListener(v -> {
             if(!mediaPlayer.isPlaying()){
                 mediaPlayer.start();
             }
+            else{
+                mediaPlayer.pause();
+            }
         });
+
 
         // Finish the activity and go back to the main menu
         ImageView backButton = findViewById(R.id.backButton);
@@ -75,47 +93,6 @@ public class Level extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Você não tem mais moedas", Toast.LENGTH_SHORT).show();
             }*/
             startActivity(intentSkip);
-        });
-
-        Button button = findViewById(R.id.send);
-        button.setOnClickListener(v -> {
-            EditText answer = findViewById(R.id.answer);
-            Context context = getApplicationContext();
-            CharSequence text = answer.getText().toString().toLowerCase().trim();
-            int duration = Toast.LENGTH_SHORT;
-
-            if (text.equals(status.getAnswer())) {
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putInt("coins", prefs.getInt("coins", 0) + 30);
-                editor.putInt(Integer.toString(status.getLevel()), 3);
-                editor.putInt(Integer.toString(status.getLevel() + 1), 2);
-                editor.apply();
-                coins.setText("" + prefs.getInt("coins", 0));
-                Toast toast = Toast.makeText(context, "Resposta correta", duration);
-                toast.show();
-                finish();
-            } else {
-                try {
-                    int numOfLives = Integer.parseInt(lives.getText().toString());
-                    if (numOfLives > 0) {
-                        numOfLives -= 1;
-                        SharedPreferences.Editor editor = prefs.edit();
-                        editor.putInt("lives", numOfLives);
-                        editor.apply();
-                        lives.setText("" + prefs.getInt("lives", 0));
-                        Toast toast = Toast.makeText(context, "Resposta incorreta", duration);
-                        toast.show();
-                        if(!isMyServiceRunning(Reload.class)) {
-                            startService(new Intent(this, Reload.class));
-                        }
-                    } else {
-                        Toast toast = Toast.makeText(context, "Suas vidas acabaram", duration);
-                        toast.show();
-                    }
-                } catch (NumberFormatException e) {
-                    // ver o que fazer aqui
-                }
-            }
         });
 
         // Show tip button
@@ -143,6 +120,79 @@ public class Level extends AppCompatActivity {
             }
         }
         return false;
+    }
+
+    @SuppressLint({"NonConstantResourceId", "SetTextI18n"})
+    @Override
+    public void onClick(View v){
+       CharSequence text = "";
+        switch (v.getId()){
+            case R.id.button1:
+                text = b1.getText().toString().toLowerCase().trim();
+                break;
+            case R.id.button2:
+                text = b2.getText().toString().toLowerCase().trim();
+                break;
+            case R.id.button3:
+                text = b3.getText().toString().toLowerCase().trim();
+                break;
+            case R.id.button4:
+                text = b4.getText().toString().toLowerCase().trim();
+                break;
+            default:
+                Toast.makeText(getApplicationContext(), "An error has occured", Toast.LENGTH_SHORT).show();
+        }
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+
+        if (text.equals(status.getAnswer())) {
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putInt("coins", prefs.getInt("coins", 0) + 30);
+            editor.putInt(Integer.toString(status.getLevel()), 3);
+            editor.putInt(Integer.toString(status.getLevel() + 1), 2);
+            editor.apply();
+            coins.setText("" + prefs.getInt("coins", 0));
+            Toast toast = Toast.makeText(context, "Resposta correta", duration);
+            toast.show();
+            finish();
+        } else {
+            try {
+                int numOfLives = Integer.parseInt(lives.getText().toString());
+                if (numOfLives > 0) {
+                    numOfLives -= 1;
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putInt("lives", numOfLives);
+                    editor.apply();
+                    lives.setText("" + prefs.getInt("lives", 0));
+                    Toast toast = Toast.makeText(context, "Resposta incorreta", duration);
+                    toast.show();
+                    if(!isMyServiceRunning(Reload.class)) {
+                        startService(new Intent(this, Reload.class));
+                    }
+                } else {
+                    Toast toast = Toast.makeText(context, "Suas vidas acabaram", duration);
+                    toast.show();
+                }
+            } catch (NumberFormatException e) {
+                // ver o que fazer aqui
+            }
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(mediaPlayer.isPlaying()){
+            mediaPlayer.stop();
+        }
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        if(mediaPlayer.isPlaying()){
+            mediaPlayer.pause();
+        }
     }
 }
 

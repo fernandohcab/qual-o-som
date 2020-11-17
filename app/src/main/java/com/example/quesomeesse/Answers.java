@@ -4,20 +4,19 @@ import java.io.Serializable;
 
 public class Answers implements Serializable {
 
-    // The level selected
-    private final int level;
-    // The expected answer
-    private final String answer;
-    // The audio played
-    private final int audio;
-    // Done or undone
-    private final int state;
+    // The level selected, the audio to be played and if the level is done or not
+    private final int level, audio, state;
+    // The expected answer and the 3 other options
+    private final String answer, op2, op3, op4;
 
-    public Answers(int currentLevel, String correctAnswer, int audioID, int st){
+    public Answers(int currentLevel, String correctAnswer, int audioID, int st, String opt2, String opt3, String opt4){
         this.level = currentLevel;
         this.answer = correctAnswer;
         this.audio = audioID;
         this.state = st;
+        this.op2 = opt2;
+        this.op3 = opt3;
+        this.op4 = opt4;
     }
 
     public int getLevel(){
@@ -47,4 +46,17 @@ public class Answers implements Serializable {
         }
         return 0;
     }
+
+    public String getOp2(){
+        return this.op2;
+    }
+
+    public String getOp3(){
+        return this.op3;
+    }
+
+    public String getOp4(){
+        return this.op4;
+    }
+
 }

@@ -11,41 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            tools:ignore="RelativeOverlap">
-            <EditText
-                android:id="@+id/answer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="362dp"
-                android:ems="10"
-                android:importantForAutofill="no"
-                android:inputType="textPersonName"
-                tools:ignore="LabelFor" />
-        </LinearLayout>
-        <Button
-            android:id="@+id/send"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="321dp"
-            android:layout_marginLeft="321dp"
-            android:layout_marginTop="360dp"
-            android:text="@string/send"
-            android:background="@drawable/button_style"
-            app:backgroundTint="@color/white"
-            android:textColor="#506fa9"
-            tools:ignore="RelativeOverlap" />
-
-
-
         <ImageView
             android:id="@+id/buyLives"
             android:layout_width="130dp"
@@ -160,6 +125,75 @@
             android:layout_marginTop="17dp"
             android:gravity="center"
             android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="254dp"
+            android:layout_marginLeft="254dp"
+            android:layout_marginBottom="208dp"
+            android:background="@drawable/button_style"
+            android:onClick="onClick"
+            android:gravity="center"
+            android:textColor="#55BBEF"
+            app:backgroundTint="@color/white"
+           />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="67dp"
+            android:layout_marginLeft="54dp"
+            android:layout_marginBottom="107dp"
+            android:background="@drawable/button_style"
+            android:onClick="onClick"
+            android:textColor="#55BBEF"
+            android:gravity="center"
+            app:backgroundTint="@color/white"
+          />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="254dp"
+            android:layout_marginLeft="254dp"
+            android:layout_marginBottom="107dp"
+            android:background="@drawable/button_style"
+            android:onClick="onClick"
+            android:textColor="#55BBEF"
+            android:gravity="center"
+            app:backgroundTint="@color/white"
+          />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="67dp"
+            android:layout_marginLeft="67dp"
+            android:layout_marginBottom="208dp"
+            android:background="@drawable/button_style"
+            android:onClick="onClick"
+            android:gravity="center"
+            android:textColor="#55BBEF"
+            app:backgroundTint="@color/white"
+
+            />
 
 
     </RelativeLayout>

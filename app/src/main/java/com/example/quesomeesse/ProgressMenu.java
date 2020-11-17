@@ -38,31 +38,22 @@ public class ProgressMenu extends AppCompatActivity {
         // Create the levels
         ArrayList<Answers> answers = new ArrayList<>();
         if(Locale.getDefault().getDisplayLanguage().toLowerCase().equals("português")) {
-            answers.add(new Answers(1, "oi amor", R.raw.oiamor, prefs.getInt("1", 0)));
-            answers.add(new Answers(2, "fase 2", R.raw.fase2, prefs.getInt("2", 0)));
-            answers.add(new Answers(3, "fase 3", R.raw.fase3, prefs.getInt("3", 0)));
-            answers.add(new Answers(4, "fase 3", R.raw.fase3, prefs.getInt("4", 0)));
-            answers.add(new Answers(5, "fase 3", R.raw.fase3, prefs.getInt("5", 0)));
-            answers.add(new Answers(6, "fase 3", R.raw.fase3, prefs.getInt("6", 0)));
+            answers.add(new Answers(1, "oi amor", R.raw.oiamor, prefs.getInt("1", 0), "oi moza", "oi mozona", "eae menó"));
+            answers.add(new Answers(2, "fase 2", R.raw.fase2, prefs.getInt("2", 0),"faze 2", "sei nao", "coe mo"));
+            answers.add(new Answers(3, "fase 3", R.raw.fase3, prefs.getInt("3", 0),"faze 3", "gostou mo", "fala que sim"));
 
         }
 
         else if(Locale.getDefault().getDisplayLanguage().toLowerCase().equals("english")){
-            answers.add(new Answers(1, "hello honey", R.raw.oiamor, prefs.getInt("1", 0)));
-            answers.add(new Answers(2, "phase 2", R.raw.fase2, prefs.getInt("2", 0)));
-            answers.add(new Answers(3, "phase 3", R.raw.fase3, prefs.getInt("3", 0)));
-            answers.add(new Answers(4, "phase 3", R.raw.fase3, prefs.getInt("4", 0)));
-            answers.add(new Answers(5, "phase 3", R.raw.fase3, prefs.getInt("5", 0)));
-            answers.add(new Answers(6, "phase 3", R.raw.fase3, prefs.getInt("6", 0)));
+            answers.add(new Answers(1, "hello honey", R.raw.oiamor, prefs.getInt("1", 0),"hello female", "i don't know", "airon now"));
+            answers.add(new Answers(2, "phase 2", R.raw.fase2, prefs.getInt("2", 0),"faze 2", "sei nao", "coe mo"));
+            answers.add(new Answers(3, "phase 3", R.raw.fase3, prefs.getInt("3", 0),"faze 2", "sei nao", "coe mo"));
         }
 
         else if(Locale.getDefault().getDisplayLanguage().toLowerCase().equals("español")){
-            answers.add(new Answers(1, "hola amor", R.raw.oiamor, prefs.getInt("1", 0)));
-            answers.add(new Answers(2, "fase 2", R.raw.fase2, prefs.getInt("2", 0)));
-            answers.add(new Answers(3, "fase 3", R.raw.fase3, prefs.getInt("3", 0)));
-            answers.add(new Answers(4, "fase 3", R.raw.fase3, prefs.getInt("4", 0)));
-            answers.add(new Answers(5, "fase 3", R.raw.fase3, prefs.getInt("5", 0)));
-            answers.add(new Answers(6, "fase 3", R.raw.fase3, prefs.getInt("6", 0)));
+            answers.add(new Answers(1, "hola amor", R.raw.oiamor, prefs.getInt("1", 0),"hola mujer", "sei nao", "coe mo"));
+            answers.add(new Answers(2, "fase 2", R.raw.fase2, prefs.getInt("2", 0),"faze 2", "sei nao", "coe mo"));
+            answers.add(new Answers(3, "fase 3", R.raw.fase3, prefs.getInt("3", 0),"faze 2", "sei nao", "coe mo"));
         }
         AnswersAdapter adapter = new AnswersAdapter(this, answers);
 
