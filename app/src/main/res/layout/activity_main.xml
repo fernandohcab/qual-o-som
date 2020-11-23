@@ -183,7 +183,7 @@
         android:layout_marginRight="95dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/play"
+        app:srcCompat="@mipmap/playerarrumado"
         android:contentDescription="@string/content_description_start_game" />
 </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

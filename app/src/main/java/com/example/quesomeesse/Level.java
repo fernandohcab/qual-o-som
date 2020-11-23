@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Random;
 
 public class Level extends AppCompatActivity implements View.OnClickListener {
 
@@ -43,15 +44,40 @@ public class Level extends AppCompatActivity implements View.OnClickListener {
         status = (Answers) intent.getSerializableExtra("state");
         mediaPlayer = MediaPlayer.create(this, status.getAudio());
 
-
         b1 = findViewById(R.id.button1);
-        b1.setText(status.getAnswer());
         b2 = findViewById(R.id.button2);
-        b2.setText(status.getOp2());
         b3 = findViewById(R.id.button3);
-        b3.setText(status.getOp3());
         b4 = findViewById(R.id.button4);
-        b4.setText(status.getOp4());
+
+        Random random = new Random();
+        switch(random.nextInt(4)){
+            case 0:
+            case 1:
+            default:
+                b1.setText(status.getAnswer());
+                b2.setText(status.getOp2());
+                b3.setText(status.getOp3());
+                b4.setText(status.getOp4());
+                break;
+            case 2:
+                b2.setText(status.getAnswer());
+                b1.setText(status.getOp2());
+                b3.setText(status.getOp3());
+                b4.setText(status.getOp4());
+                break;
+            case 3:
+                b3.setText(status.getAnswer());
+                b2.setText(status.getOp2());
+                b1.setText(status.getOp3());
+                b4.setText(status.getOp4());
+                break;
+            case 4:
+                b4.setText(status.getAnswer());
+                b2.setText(status.getOp2());
+                b3.setText(status.getOp3());
+                b1.setText(status.getOp4());
+                break;
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -62,7 +88,7 @@ public class Level extends AppCompatActivity implements View.OnClickListener {
         lives.setText("" + prefs.getInt("lives", 0));
         coins.setText("" + prefs.getInt("coins", 0));
 
-        Intent intent = getIntent();
+      //  Intent intent = getIntent();
 
         ImageView playSoundButton = findViewById(R.id.playSoundButton);
         playSoundButton.setOnClickListener(v -> {
