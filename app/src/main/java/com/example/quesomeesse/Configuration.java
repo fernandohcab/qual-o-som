@@ -6,7 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 import java.util.Objects;
 
 public class Configuration extends AppCompatActivity {
@@ -30,7 +30,7 @@ public class Configuration extends AppCompatActivity {
         goBack.setOnClickListener(v -> finish());
 
         // Buy the premium version
-        TextView buyPremium = findViewById(R.id.buyPremium);
+        LinearLayout buyPremium = findViewById(R.id.linearLayout1);
         buyPremium.setOnClickListener(v -> {
             final String appPackageName = "com.robtopx.geometryjump";
             try {
@@ -41,7 +41,7 @@ public class Configuration extends AppCompatActivity {
         });
 
         // Review the application
-        TextView rateTheApp = findViewById(R.id.review);
+        LinearLayout rateTheApp = findViewById(R.id.linearLayout2);
         rateTheApp.setOnClickListener(v -> {
             final String appPackageName = "com.robtopx.geometryjump";
             try {
@@ -52,7 +52,7 @@ public class Configuration extends AppCompatActivity {
         });
 
         // Report any bugs that were found
-        TextView report = findViewById(R.id.reportBugs);
+        LinearLayout report = findViewById(R.id.linearLayout3);
         report.setOnClickListener(v -> {
             Intent send = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto","fernandohcab@gmail.com", null));
             send.putExtra(Intent.EXTRA_SUBJECT, "Bug found");

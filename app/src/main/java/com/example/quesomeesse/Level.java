@@ -50,10 +50,8 @@ public class Level extends AppCompatActivity implements View.OnClickListener {
         b4 = findViewById(R.id.button4);
 
         Random random = new Random();
-        switch(random.nextInt(4)){
-            case 0:
+        switch(random.nextInt(4) + 1){
             case 1:
-            default:
                 b1.setText(status.getAnswer());
                 b2.setText(status.getOp2());
                 b3.setText(status.getOp3());
@@ -72,6 +70,7 @@ public class Level extends AppCompatActivity implements View.OnClickListener {
                 b4.setText(status.getOp4());
                 break;
             case 4:
+            default:
                 b4.setText(status.getAnswer());
                 b2.setText(status.getOp2());
                 b3.setText(status.getOp3());
@@ -108,18 +107,7 @@ public class Level extends AppCompatActivity implements View.OnClickListener {
         // Skip the current level
         ImageView skip = findViewById(R.id.nextLevelButton);
         Intent intentSkip = new Intent(this, SkipLevel.class);
-        skip.setOnClickListener(v -> {
-          /*  if( (prefs.getInt("coins", 0) - 10 > 0) || (prefs.getInt("coins", 0) - 15 > 0) ) {
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putInt("coins", prefs.getInt("coins", 0) - 15);
-                editor.apply();
-                coins.setText("" + prefs.getInt("coins", 0));
-            }
-            else{
-                Toast.makeText(getApplicationContext(), "Você não tem mais moedas", Toast.LENGTH_SHORT).show();
-            }*/
-            startActivity(intentSkip);
-        });
+        skip.setOnClickListener(v -> startActivity(intentSkip));
 
         // Show tip button
         ImageView tips = findViewById(R.id.tipButton);
@@ -173,9 +161,13 @@ public class Level extends AppCompatActivity implements View.OnClickListener {
 
         if (text.equals(status.getAnswer())) {
             SharedPreferences.Editor editor = prefs.edit();
-            editor.putInt("coins", prefs.getInt("coins", 0) + 30);
+            if(prefs.getInt(Integer.toString(status.getLevel()), 0) != 3){
+                editor.putInt("coins", prefs.getInt("coins", 0) + 30);
+            }
             editor.putInt(Integer.toString(status.getLevel()), 3);
-            editor.putInt(Integer.toString(status.getLevel() + 1), 2);
+            if(prefs.getInt(Integer.toString(status.getLevel() + 1), 0) != 3) {
+                editor.putInt(Integer.toString(status.getLevel() + 1), 2);
+            }
             editor.apply();
             coins.setText("" + prefs.getInt("coins", 0));
             Toast toast = Toast.makeText(context, "Resposta correta", duration);

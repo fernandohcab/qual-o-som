@@ -39,6 +39,11 @@ public class SkipLevel extends AppCompatActivity {
         // Buy tip
         ImageView yes = findViewById(R.id.yesButton);
 
+        if(prefs.getInt("coins", 0) <= 0){
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putInt("coins", 0);
+            editor.apply();
+        }
         yes.setOnClickListener(v -> {
             if((prefs.getInt("coins", 0) - 10 >= 0) || (prefs.getInt("coins", 0) - 15 >= 0) ) {
                 SharedPreferences.Editor editor = prefs.edit();

@@ -37,7 +37,7 @@ public class Answers implements Serializable {
 
     public int getImage(){
         if(this.getState() == 1){
-            return R.mipmap.heartat;
+            return R.drawable.lock;
         }
         else if(this.getState() == 2){
             return R.mipmap.undone;
