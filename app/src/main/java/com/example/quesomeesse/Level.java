@@ -159,7 +159,7 @@ public class Level extends AppCompatActivity implements View.OnClickListener {
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
 
-        if (text.equals(status.getAnswer())) {
+        if (text.equals(status.getAnswer()) && prefs.getInt("lives", 0) > 0) {
             SharedPreferences.Editor editor = prefs.edit();
             if(prefs.getInt(Integer.toString(status.getLevel()), 0) != 3){
                 editor.putInt("coins", prefs.getInt("coins", 0) + 30);

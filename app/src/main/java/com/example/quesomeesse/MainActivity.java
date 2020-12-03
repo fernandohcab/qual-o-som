@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Calendar;
 import java.util.Objects;
 
 
@@ -39,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = prefs.edit();
             editor.putInt("lives", 10);
             editor.putInt("coins", 150);
+            editor.putInt("dailyLogin", 0);
             editor.putString("first", "true");
             editor.putInt("1", 2);
             editor.putInt("2", 1);
@@ -66,6 +70,15 @@ public class MainActivity extends AppCompatActivity {
 
         lives.setText("" + prefs.getInt("lives", 0));
         coins.setText("" + prefs.getInt("coins", 0));
+
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        if(prefs.getInt("logindiario", 0) == 0){
+            Toast.makeText(getApplicationContext(), day + "/" + month + "/" + year, Toast.LENGTH_LONG).show();
+        }
+
 
     }
 

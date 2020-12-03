@@ -28,4 +28,11 @@
     <string name="title_activity_reload_lives">Recarregar vidas</string>
     <string name="level">Escolher o nível</string>
     <string name="skip_level">Pular nível</string>
+    <string name="dayOne">Dia 1</string>
+    <string name="dayTwo">Dia 2</string>
+    <string name="dayThree">Dia 3</string>
+    <string name="dayFour">Dia 4</string>
+    <string name="dayFive">Dia 5</string>
+    <string name="daySix">Dia 6</string>
+    <string name="daySeven">Dia 7</string>
 </resources>
