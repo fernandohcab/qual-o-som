@@ -79,7 +79,7 @@ public class ProgressMenu extends AppCompatActivity {
             answers.add(new Answers(39, "bola de bilhar", R.raw.poolball, prefs.getInt("39", 0),"pebolim", "dominó", "brindar"));
             answers.add(new Answers(40, "grampeador", R.raw.stapler, prefs.getInt("40", 0),"pistola de grampos", "tirar foto", "tambor"));
             answers.add(new Answers(41, "impressora", R.raw.printer, prefs.getInt("41", 0),"caixa eletrônico", "esteira", "furadeira"));
-            answers.add(new Answers(42, "bebê cjorando", R.raw.babycrying, prefs.getInt("42", 0),"bezerro", "risada", "engasgar"));
+            answers.add(new Answers(42, "bebê chorando", R.raw.babycrying, prefs.getInt("42", 0),"bezerro", "risada", "engasgar"));
             answers.add(new Answers(43, "telefone tocando", R.raw.telephoneringing, prefs.getInt("43", 0),"campainha", "teclado musical", "sirene"));
             answers.add(new Answers(44, "buzina", R.raw.carhorn, prefs.getInt("44", 0),"trem", "bicicleta", "caminhão"));
             answers.add(new Answers(45, "mouse de computador", R.raw.mouseclicking, prefs.getInt("45", 0),"grampeador", "carimbo", "pipoca"));
@@ -95,6 +95,25 @@ public class ProgressMenu extends AppCompatActivity {
             answers.add(new Answers(55, "pássaros", R.raw.birds, prefs.getInt("55", 0),"galinha", "sino", "avestruz"));
             answers.add(new Answers(56, "buzina de barco", R.raw.boathorn, prefs.getInt("56", 0), "arrastar cadeira", "vaca", "berrante"));
             answers.add(new Answers(57, "comida crocante", R.raw.chewfood, prefs.getInt("57", 0), "chiclete", "isopor", "galhos de árvore"));
+            answers.add(new Answers(58, "cavalo", R.raw.horse, prefs.getInt("58", 0), "moedas", "relógio", "motor"));
+            answers.add(new Answers(59, "lápis", R.raw.pencil, prefs.getInt("59", 0), "giz de cera", "aerosol", "caneta hidrográfica"));
+            answers.add(new Answers(60, "trovão", R.raw.thunder, prefs.getInt("60", 0), "tambor", "oceano", "ventania"));
+            answers.add(new Answers(61, "cadeira", R.raw.chair, prefs.getInt("61", 0), "descarga", "chuva", "embalagem"));
+            answers.add(new Answers(62, "chuva", R.raw.rain, prefs.getInt("62", 0), "fritura", "cachoeira", "ventania"));
+            answers.add(new Answers(63, "washingmachine", R.raw.washingmachine, prefs.getInt("63", 0), "micro-ondas", "batedeira", "air condicionado"));
+            answers.add(new Answers(64, "tesoura", R.raw.haircut, prefs.getInt("64", 0), "máquina de escrever", "teclado", "amolar a faca"));
+            answers.add(new Answers(65, "chaves", R.raw.keys, prefs.getInt("65", 0), "moedas", "relógio", "sinos"));
+            answers.add(new Answers(66, "helicóptero", R.raw.helicopter, prefs.getInt("66", 0), "cortador de grama", "trator", "britadeira"));
+            answers.add(new Answers(67, "assoviar", R.raw.whistle, prefs.getInt("67", 0), "pássaro", "flauta", "gaita"));
+            answers.add(new Answers(68, "martelo", R.raw.hammer, prefs.getInt("68", 0), "bater à porta", "cavalo", "coração batendo"));
+            answers.add(new Answers(69, "skate", R.raw.skate, prefs.getInt("69", 0), "bicicleta", "patins", "trilhos de trem"));
+            answers.add(new Answers(70, "teclado do celular", R.raw.mobilekeyboard, prefs.getInt("70", 0), "salto alto", "relógio", "dentadura"));
+            answers.add(new Answers(71, "porco", R.raw.pig, prefs.getInt("71", 0), "rosnar", "ronronar", "engasgar"));
+            answers.add(new Answers(72, "rádio", R.raw.radio, prefs.getInt("72", 0), "papel alumínio", "fritura", "ventania"));
+            answers.add(new Answers(73, "pacote de salgadinho", R.raw.salgadinho, prefs.getInt("73", 0), "comida crocante", "folha de caderno", "amassar lata"));
+            answers.add(new Answers(74, "panela de pressão", R.raw.pressurecooker, prefs.getInt("74", 0), "chuveiro", "trem a vapor", "fogos de artifício"));
+            answers.add(new Answers(75, "estalo de dedo", R.raw.fingersnap, prefs.getInt("75", 0), "gota d'água", "chiclete", "bombinhas"));
+            answers.add(new Answers(76, "batimento cardíaco", R.raw.heartbeat, prefs.getInt("76", 0), "tambor", "tique-taque", "sapateado"));
         }
 
         else if(Locale.getDefault().getDisplayLanguage().toLowerCase().equals("english")){
@@ -155,6 +174,25 @@ public class ProgressMenu extends AppCompatActivity {
             answers.add(new Answers(55, "birds", R.raw.birds, prefs.getInt("55", 0),"chicken", "bell", "ostrich"));
             answers.add(new Answers(56, "boat horn", R.raw.boathorn, prefs.getInt("56", 0), "drag chair", "cow", "gaudy"));
             answers.add(new Answers(57, "crispy food", R.raw.chewfood, prefs.getInt("57", 0), "bubble gum", "styrofoam", "tree branches"));
+            answers.add(new Answers(58, "horse", R.raw.horse, prefs.getInt("58", 0), "laugh", "sneeze", "engine"));
+            answers.add(new Answers(59, "pencil", R.raw.pencil, prefs.getInt("59", 0), "crayon", "aerosol", "hydrographic pen"));
+            answers.add(new Answers(60, "thunder", R.raw.thunder, prefs.getInt("60", 0), "drum", "ocean", "wind"));
+            answers.add(new Answers(61, "chair", R.raw.chair, prefs.getInt("61", 0), "toilet flush", "rain", "packing"));
+            answers.add(new Answers(62, "rain", R.raw.rain, prefs.getInt("62", 0), "frying", "waterfall", "wind"));
+            answers.add(new Answers(63, "washing machine", R.raw.washingmachine, prefs.getInt("63", 0), "microwave", "food mixer", "air conditioning"));
+            answers.add(new Answers(64, "scissors", R.raw.haircut, prefs.getInt("64", 0), "typewriter", "keyboard", "sharpen the knife"));
+            answers.add(new Answers(65, "keys", R.raw.keys, prefs.getInt("65", 0), "coins", "clock", "bells"));
+            answers.add(new Answers(66, "helicopter", R.raw.helicopter, prefs.getInt("66", 0), "lawn mower", "tractor", "stone crusher"));
+            answers.add(new Answers(67, "whistle", R.raw.whistle, prefs.getInt("67", 0), "bird", "flute", "harmonica"));
+            answers.add(new Answers(68, "hammer", R.raw.hammer, prefs.getInt("68", 0), "knock the door", "horse", "heart beating"));
+            answers.add(new Answers(69, "skateboard", R.raw.skate, prefs.getInt("69", 0), "bicycle", "rollerblades", "train tricks"));
+            answers.add(new Answers(70, "mobile keyboard", R.raw.mobilekeyboard, prefs.getInt("70", 0), "high heels", "clock", "denture"));
+            answers.add(new Answers(71, "pig", R.raw.pig, prefs.getInt("71", 0), "growl", "purr", "choke"));
+            answers.add(new Answers(72, "radio", R.raw.radio, prefs.getInt("72", 0), "aluminium paper", "frying", "wind"));
+            answers.add(new Answers(73, "packet of snacks", R.raw.salgadinho, prefs.getInt("73", 0), "crispy food", "notebook sheet", "kneading can"));
+            answers.add(new Answers(74, "pressure cooker", R.raw.pressurecooker, prefs.getInt("74", 0), "shower", "steam train", "firework"));
+            answers.add(new Answers(75, "finger snap", R.raw.fingersnap, prefs.getInt("75", 0), "drop of water", "bubble gum", "firecrackers"));
+            answers.add(new Answers(76, "heartbeat", R.raw.heartbeat, prefs.getInt("76", 0), "drum", "ticking", "tap dance"));
         }
 
         else if(Locale.getDefault().getDisplayLanguage().toLowerCase().equals("español")){
@@ -215,6 +253,25 @@ public class ProgressMenu extends AppCompatActivity {
             answers.add(new Answers(55, "aves", R.raw.birds, prefs.getInt("55", 0),"pollo", "campana", "avestruz"));
             answers.add(new Answers(56, "bocina de barco", R.raw.boathorn, prefs.getInt("56", 0), "arrastra la silla", "vaca", "llamativos"));
             answers.add(new Answers(57, "comida crujiente", R.raw.chewfood, prefs.getInt("57", 0), "chicle", "espuma de poliestireno", "ramas de los árboles"));
+            answers.add(new Answers(58, "caballo", R.raw.horse, prefs.getInt("58", 0), "risa", "estornudo", "motor"));
+            answers.add(new Answers(59, "lápiz", R.raw.pencil, prefs.getInt("59", 0), "crayón de cera", "aerosol", "pluma hidrográfica"));
+            answers.add(new Answers(60, "trueno", R.raw.thunder, prefs.getInt("60", 0), "tambor", "oceano", "viento"));
+            answers.add(new Answers(61, "silla", R.raw.chair, prefs.getInt("61", 0), "botar el agua del baño", "lluvia", "embalaje"));
+            answers.add(new Answers(62, "lluvia", R.raw.rain, prefs.getInt("62", 0), "fritura", "cascada", "viento"));
+            answers.add(new Answers(63, "lavadora", R.raw.washingmachine, prefs.getInt("63", 0), "microondas", "procesador de alimentos", "aire acondicionado"));
+            answers.add(new Answers(64, "tijeras", R.raw.haircut, prefs.getInt("64", 0), "maquina de escribir", "teclado", "afilar el cuchillo"));
+            answers.add(new Answers(65, "llaves", R.raw.keys, prefs.getInt("65", 0), "monedas", "reloj", "campanas"));
+            answers.add(new Answers(66, "helicóptero", R.raw.helicopter, prefs.getInt("66", 0), "cortadora de pasto", "tractor", "trituradora de piedra"));
+            answers.add(new Answers(67, "silbar", R.raw.whistle, prefs.getInt("67", 0), "ave", "flauta", "harmónica"));
+            answers.add(new Answers(68, "martillo", R.raw.hammer, prefs.getInt("68", 0), "tocar la puerta", "caballo", "corazón palpitante"));
+            answers.add(new Answers(69, "patineta", R.raw.skate, prefs.getInt("69", 0), "bicicleta", "patines", "vías del tren"));
+            answers.add(new Answers(70, "teclado del teléfono celular", R.raw.mobilekeyboard, prefs.getInt("70", 0), "tacones altos", "reloj", "dentadura"));
+            answers.add(new Answers(71, "cerdo", R.raw.pig, prefs.getInt("71", 0), "gruñido", "ronroneo", "ahogo"));
+            answers.add(new Answers(72, "radio", R.raw.radio, prefs.getInt("72", 0), "papel aluminio", "fritura", "viento"));
+            answers.add(new Answers(73, "paquete de bocadillos", R.raw.salgadinho, prefs.getInt("73", 0), "comida crujiente", "hoja de cuaderno", "amasar lata"));
+            answers.add(new Answers(74, "olla a presión", R.raw.pressurecooker, prefs.getInt("74", 0), "ducha", "tren a vapor", "fuegos artificiales"));
+            answers.add(new Answers(75, "chasquido de dedos", R.raw.fingersnap, prefs.getInt("75", 0), "gota de agua", "chicle", "petardos"));
+            answers.add(new Answers(76, "latido de corazón", R.raw.heartbeat, prefs.getInt("76", 0), "tambor", "tic tac", "zapateado"));
         }
         AnswersAdapter adapter = new AnswersAdapter(this, answers);
 
