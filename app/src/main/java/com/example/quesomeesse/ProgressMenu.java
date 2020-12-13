@@ -3,6 +3,7 @@ package com.example.quesomeesse;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.WindowManager;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -100,7 +101,7 @@ public class ProgressMenu extends AppCompatActivity {
             answers.add(new Answers(60, "trovão", R.raw.thunder, prefs.getInt("60", 0), "tambor", "oceano", "ventania"));
             answers.add(new Answers(61, "cadeira", R.raw.chair, prefs.getInt("61", 0), "descarga", "chuva", "embalagem"));
             answers.add(new Answers(62, "chuva", R.raw.rain, prefs.getInt("62", 0), "fritura", "cachoeira", "ventania"));
-            answers.add(new Answers(63, "washingmachine", R.raw.washingmachine, prefs.getInt("63", 0), "micro-ondas", "batedeira", "air condicionado"));
+            answers.add(new Answers(63, "washingmachine", R.raw.washingmachine, prefs.getInt("63", 0), "micro-ondas", "batedeira", "ar condicionado"));
             answers.add(new Answers(64, "tesoura", R.raw.haircut, prefs.getInt("64", 0), "máquina de escrever", "teclado", "amolar a faca"));
             answers.add(new Answers(65, "chaves", R.raw.keys, prefs.getInt("65", 0), "moedas", "relógio", "sinos"));
             answers.add(new Answers(66, "helicóptero", R.raw.helicopter, prefs.getInt("66", 0), "cortador de grama", "trator", "britadeira"));
@@ -277,7 +278,10 @@ public class ProgressMenu extends AppCompatActivity {
 
         // Show the levels in GridView
         GridView gridView = findViewById(R.id.gridView);
+        Parcelable state = gridView.onSaveInstanceState();
         gridView.setAdapter(adapter);
+
+        gridView.onRestoreInstanceState(state);
 
     }
 

@@ -45,26 +45,7 @@ public class MainActivity extends AppCompatActivity {
             editor.putInt("dailyLogin", 0);
             editor.putString("first", "true");
             editor.putInt("1", 2);
-            editor.putInt("2", 1);
-            editor.putInt("3", 1);
-            editor.putInt("4", 1);
-            editor.putInt("5", 1);
-            editor.putInt("6", 1);
-            editor.putInt("7", 1);
-            editor.putInt("8", 1);
-            editor.putInt("9", 1);
-            editor.putInt("10", 1);
-            editor.putInt("11", 1);
-            editor.putInt("12", 1);
-            editor.putInt("13", 1);
-            editor.putInt("14", 1);
-            editor.putInt("15", 1);
-            editor.putInt("16", 1);
-            editor.putInt("17", 1);
-            editor.putInt("18", 1);
-            editor.putInt("19", 1);
-            editor.putInt("20", 1);
-            editor.putInt("21", 1);
+            for(int i=2;i<=76;i++) {editor.putInt(""+i, 1);}
             editor.apply();
         }
 

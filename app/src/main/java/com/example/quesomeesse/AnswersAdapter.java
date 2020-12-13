@@ -3,6 +3,7 @@ package com.example.quesomeesse;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,7 @@ public class AnswersAdapter extends ArrayAdapter<Answers> {
                 v.getContext().startActivity(intent);
             }
         });
+
 
         return listItemView;
     }
