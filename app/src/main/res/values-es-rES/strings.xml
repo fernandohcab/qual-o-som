@@ -35,4 +35,5 @@
     <string name="dayFive">Día 5</string>
     <string name="daySix">Día 6</string>
     <string name="daySeven">Día 7</string>
+    <string name="dailyPrize">Premio diaria</string>
 </resources>
